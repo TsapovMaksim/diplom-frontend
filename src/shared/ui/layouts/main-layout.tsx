@@ -70,6 +70,10 @@ const MainLayout = (props: MainLayoutProps) => {
   const setBasket = useBasketStore(state => state.setBasket);
 
   useEffect(() => {
+    console.log('process env', process.env);
+  }, []);
+
+  useEffect(() => {
     console.log('basket', basket);
 
     if (!basket) return;
