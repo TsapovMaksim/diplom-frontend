@@ -2,7 +2,7 @@
 import { Button, Form, Input, Typography, message } from 'antd';
 import React from 'react';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 type FormValue = {
   email: string;
@@ -16,6 +16,8 @@ type Props = {
 };
 
 const SignInPage = (props: Props) => {
+  const params = useSearchParams();
+
   const router = useRouter();
   const handleFinish = async (values: FormValue) => {
     const res = await signIn('credentials', {
@@ -28,9 +30,11 @@ const SignInPage = (props: Props) => {
       return;
     }
     try {
-      const url = new URL(props.searchParams.callbackUrl);
+      const url = new URL(params.get('callbackUrl') as string);
+
       router.replace(url.pathname);
     } catch (error) {
+      console.error(error);
       router.replace('');
     }
     return;

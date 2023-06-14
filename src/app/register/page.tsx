@@ -3,6 +3,7 @@ import { Button, Form, Input, Typography, message } from 'antd';
 import React from 'react';
 import { signIn } from 'next-auth/react';
 import { useCreateUser } from '@/api/user/hooks';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 type FormValue = {
   email: string;
@@ -18,17 +19,24 @@ type Props = {
 };
 
 const RegisterPage = (props: Props) => {
+  const searchParams = useSearchParams();
   const { mutateAsync: createUser, isLoading: isCreateUserLoading } =
     useCreateUser();
+  const router = useRouter();
   const handleFinish = async (values: FormValue) => {
     try {
       await createUser(values);
-      signIn('credentials', {
-        redirect: true,
-        callbackUrl: props.searchParams.callbackUrl,
+      const res = await signIn('credentials', {
+        redirect: false,
         email: values.email,
         password: values.password,
       });
+      if (res?.error) {
+        console.error(res);
+        message.error('Ошибка регистрации');
+        return;
+      }
+      router.replace(searchParams.get('callbackUrl') || '');
     } catch (error: any) {
       message.error(error.response.data.error);
     }
