@@ -10,6 +10,20 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'src')],
   },
   async rewrites() {
+    if (process.env.NODE_ENV === 'production') {
+      return [
+        {
+          source: '/server-api/:path*',
+          destination:
+            'https://diplom-backend-ucem.onrender.com/server-api/:path*',
+          basePath: false,
+        },
+        {
+          source: '/uploads/:path*',
+          destination: 'https://diplom-backend-ucem.onrender.com/static/:path*',
+        },
+      ];
+    }
     return [
       {
         source: '/server-api/:path*',
@@ -23,11 +37,19 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: ['http://localhost:3000'],
+    domains: [
+      'http://localhost:3000',
+      'https://diplom-backend-ucem.onrender.com',
+    ],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'gw.alipayobjects.com',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'diplom-backend-ucem.onrender.com',
         port: '',
       },
       {
