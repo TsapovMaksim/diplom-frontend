@@ -1,0 +1,9 @@
+.basket {
+  display: flex;
+  column-gap: 16px;
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+    row-gap: 16px;
+  }
+}

@@ -1,0 +1,79 @@
+.basket-item {
+  display: flex;
+  column-gap: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 18%);
+  background: #fff;
+  max-width: 714px;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  &__price {
+    width: 180px;
+    text-align: end;
+    @media screen and (max-width: 500px) {
+      display: none;
+    }
+    &_mobile {
+      display: none;
+      display: initial;
+      @media screen and (max-width: 500px) {
+        display: initial;
+      }
+    }
+  }
+
+  &__image {
+    width: 120px;
+    height: 120px;
+    &-wrapper {
+      @media screen and (max-width: 500px) {
+        display: flex;
+        column-gap: 8px;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 100px;
+      height: 100px;
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+
+  &__link {
+    &_mobile {
+      display: none;
+      @media screen and (max-width: 500px) {
+        display: initial;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    margin-right: auto;
+
+    @media screen and (max-width: 500px) {
+      display: none;
+    }
+
+    &_mobile {
+      display: none;
+      @media screen and (max-width: 500px) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+      }
+    }
+  }
+}

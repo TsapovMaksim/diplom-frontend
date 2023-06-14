@@ -1,0 +1,34 @@
+.catalog-layout {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 292px 1fr;
+    column-gap: 20px;
+    @media screen and (max-width: 980px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__mobile-actions {
+    margin-bottom: 8px;
+    @media screen and (max-width: 980px) {
+      display: flex;
+      column-gap: 8px;
+    }
+  }
+
+  &__filter-btn {
+    display: none;
+    @media screen and (max-width: 980px) {
+      display: initial;
+    }
+  }
+
+  &__left {
+    @media screen and (max-width: 980px) {
+      display: none;
+    }
+  }
+  &__sorting {
+    min-width: 220px;
+  }
+}

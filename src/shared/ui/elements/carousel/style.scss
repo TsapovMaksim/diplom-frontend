@@ -1,0 +1,31 @@
+// .ant-carousel {
+//   .anticon {
+//     font-size: 24px;
+//   }
+// }
+
+.ant-carousel {
+  padding: 0 20px;
+
+  // .slick-track {
+  //   width: 100% !important;
+  // }
+}
+
+.ant-carousel .slick-prev,
+.ant-carousel .slick-prev:focus,
+.ant-carousel .slick-prev:hover {
+  // left: 10px;
+  z-index: 2;
+  color: currentColor;
+  font-size: 20px;
+}
+
+.ant-carousel .slick-next,
+.ant-carousel .slick-next:focus,
+.ant-carousel .slick-next:hover {
+  // right: 10px;
+  z-index: 2;
+  color: currentColor;
+  font-size: 20px;
+}
